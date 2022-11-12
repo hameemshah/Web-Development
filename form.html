@@ -8,73 +8,100 @@
 		body {
 			background: papayawhip;
 			font-family: comic sans ms;
+			text-align: center;
+			color: blue;
+			background: url('https://m.media-amazon.com/images/I/81aACRlY1iL._SL1500_.jpg');
 		}
 		fieldset {
 			background: palegoldenrod;
+			width: 70%;
+			margin: 0 auto;
+			text-align: left;
+			border-radius: 18px;
+			border: 8px dotted mediumpurple;
+			background-color: rgba(255, 255, 255, 0.8);
 		}
 		input {
 			border: 0 0 1px 0;
-			background: beige;
 			padding: 5px 0;
 			border-radius: 8px;
 			border: 0;
 			font-family: times new roman;
-			color: #FF6263;
+			color: slateblue;
 			text-align: center;
+		}
+		h1 {
+			letter-spacing: 3px;
+		}
+		span {
+			background: dodgerblue;
+			border-radius: 18px;
+			color: white;
+			opacity: 0.5;
+		}
+		legend {
+			color: mediumpurple;
+			font-size: 1.3rem;
 		}
 		.error {
 			border: 1px solid red;
 		}
+		#submit {
+			background: dodgerblue;
+			color: white;
+			font-family: inherit;
+			padding: 8px;
+			width: 100%;
+		}
+		#submit:hover {
+			opacity: 0.8;
+		}
 	</style>
 		<script>
-		function validateForm () {
-			arr = ['fname', 'dob', 'password1', 'password2','email','tel','gender','pic','distance', 'website', 'color', 'time']
-			for (let i = 0; i <= arr.length; i++) {	
-				let x = document.forms['myForm'][arr[i]].value;
-				if (x=='') {
-					alert(arr[i] + ' cannot be empty.');
-					return false;
-				}
-			}
+		function changeColor (x) {
+			x.style.background = 'papayawhip';
+		}
+		function changeColorBack(x) {
+			x.style.background = 'white';
 		}
 	</script>
 </head>
 <body>
-	<h3>Welcome to My Form</h3>
+	<h1><span>Welcome to My Form</span></h1>
 	<form action="/action_page.php" name='myForm' method="post" accept-charset="utf-8" 
 			onsubmit="return validateForm()">
 		<fieldset>
 			<legend>Complete Your Verification</legend>
 		<p>
 			<label for="name">Enter Your Name:</label>
-			<input type="text" name="fname">
+			<input type="text" id="name" name="name" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
 		</p>
 		<p>
 			<label for="dob">Enter Your Date of Birth :</label>
-			<input type="date" name="dob" id="dob" max="2022-10-26" min="1940-01-01">
-			<input type="number" name="age" id="age" readonly>
+			<input type="date" name="dob" id="dob" max="2020-10-26" min="1940-01-01" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
+			<input type="number" name="age" id="age" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" readonly>
 		</p>
 		<p>
 			<label for="password1">Enter Your Password :</label>
-			<input type="password" id="password1" name="password1">
+			<input type="password" id="password1" name="password1" minlength="6" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
 		</p>
 		<p>
 			<label for="password2">Confirm Your Password :</label>
-			<input type="password" name="password2" id="password2">
+			<input type="password" name="password2" id="password2" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" minlength="6" required>
 		</p>
 		<p>
-			<label>Enter Your Email :</label>
-			<input type="Email" name="email" id="email">
+			<label for="email">Enter Your Email :</label>
+			<input type="Email" name="email" id="email" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
 		</p>
 		<p>
-			<label>Enter Your Telephone :</label>
-			<input type="tel" name="tel" id="tel">
+			<label for="tel">Enter Your Telephone :</label>
+			<input type="tel" name="tel" id="tel" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
 		</p>
 		<p>
 			<label for="gender">Choose Your Gender :</label>
-			<input type="radio" name="gender" value="Male" id="male">
+			<input type="radio" name="gender" value="Male" id="male" required>
 			<label for="gender">Male</label>
-			<input type="radio" name="gender" value="Female" id="female">
+			<input type="radio" name="gender" value="Female" id="female" required>
 			<label for="gender">Female</label>
 		</p>
 		<p>
@@ -85,24 +112,24 @@
 			<input type="checkbox" name="lang" value="Others" id="others"> Others
 		</p>
 		<p>
-			<label>Upload Your Picture</label>
-			<input type="file" name="pic" id="pic">
+			<label for="pic">Upload Your Picture</label>
+			<input type="file" name="pic" id="pic" required>
 		</p>
 		<p>
-			<label>How much do you agree with climate change is fatal</label>
-			<input type="range" name="distance" min="0" max="20" id="distance">
+			<label for="distance">How much do you agree with climate change is fatal</label>
+			<input type="range" name="distance" min="0" max="20" id="distance" required>
 		</p>
 		<p>
-			<label>Enter URL of your website (optional)</label>
-			<input type="url" name="website" id="website">
+			<label for="website">Enter URL of your website (optional)</label>
+			<input type="url" name="website" id="website" onfocus="changeColor(this)" onfocusout="changeColorBack(this)">
 		</p>
 		<p>
-			<label>Choose Your favourite Color :</label>
-			<input type="Color" name="color" id="color">
+			<label for="color">Choose Your favourite Color :</label>
+			<input type="Color" name="color" id="color" required>
 		</p>
 		<p>
-			<label>Enter Your usual wake up time :</label>
-			<input type="time" name="time" id="time">
+			<label for="time">Enter Your usual wake up time :</label>
+			<input type="time" name="time" id="time" onfocus="changeColor(this)" onfocusout="changeColorBack(this)" required>
 		</p>
 		<p>
 			<input type="submit" value="SIGN UP" id="submit">
